@@ -12,7 +12,7 @@ const UserSchema = new Schema ({
         required: [true, "Please enter an email!"],
         unique: true,
         match: [/.+\@.+\..+/, "Please enter a valid email address!"]
-    },
+    }
     // thoughts: [
     //     {
     //         type: Schema.Types.ObjectId,
@@ -23,19 +23,19 @@ const UserSchema = new Schema ({
     //     {}
     // ]
 
-},
-    {
-        toJSON: {
-            virtuals: true,
-        },
-        id: false
-    }
+}
+    // {
+    //     toJSON: {
+    //         virtuals: true,
+    //     },
+    //     id: false
+    // }
 
 );
 
-UserSchema.virtual('friendCount').get(function () {
-    return this.friends.length;
-});
+// UserSchema.virtual('friendCount').get(function () {
+//     return this.friends.length;
+// });
 
 const User = model('User', UserSchema);
 
