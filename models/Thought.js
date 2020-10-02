@@ -1,6 +1,5 @@
 const { Schema, model, Types } = require('mongoose');
 const moment = require('moment');
-const { truncateSync } = require('fs');
 
 const ReactionSchema = new Schema(
     {
