@@ -4,6 +4,11 @@ const userController = {
     // get all users
     getAllUsers(req, res) {
         User.find({})
+            .populate({
+                path: 'friends',
+                select: '-__v'
+            })
+            .select('-__v')
             .then(dbUserData => res.json(dbUserData))
             .catch(err => {
                 console.log(err);
@@ -58,6 +63,44 @@ const userController = {
                 res.json(dbUserData);
             })
             .catch(err => res.status(400).json(err));
+    },
+
+    //add friend
+    addFriend(req, res) {
+        User.findOneAndUpdate(
+            { _id: req.params.id },
+            { $addToSet: { friends: req.params.friendId } },
+            { runValidators: true, new: true }
+        )
+            .then(dbUserData => {
+                if (!dbUserData) {
+                    return res.status(404).json({ message: 'No user with this id was found!' });
+                }
+                res.json(dbUserData);
+            })
+            .catch(err => {
+                console.log(err);
+                res.status(500).json(err);
+            });
+    },
+
+    //remove friend NEEDS WORK
+    removeFriend(req, res) {
+        User.findOneAndUpdate(
+            { _id: req.params.id },
+            { $pull: { friends: { friendId: req.params.friendId } } },
+            { runValidators: true, new: true }
+        )
+            .then(dbNotebookData => {
+                if (!dbNotebookData) {
+                    return res.status(404).json({ message: 'No user with this id!' });
+                }
+                res.json(dbNotebookData);
+            })
+            .catch(err => {
+                console.log(err);
+                res.status(500).json(err);
+            });
     }
 };
 
