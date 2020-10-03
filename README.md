@@ -27,8 +27,12 @@ Insomnia Core can be used to explore and test routes.
   * Get all thoughts
   * POST to create a thought.
  
-- `localhost:3001/api/users/:id`
-  * Get a single user by id
-  * Update a user's information
-  * Delete a user
+- `localhost:3001/api/thoughts/:id`
+  * Get a single thought by id
+  * Update a thoughts's content
+  * Delete a thought
+  
+- `localhost:3001/api/thoughts/:thoughtId/reactions`
+  * Create a new reaction attached to a specific thought
+  * Delete a reaction from a thought
   
