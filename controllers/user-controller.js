@@ -88,14 +88,14 @@ const userController = {
     removeFriend(req, res) {
         User.findOneAndUpdate(
             { _id: req.params.id },
-            { $pull: { friends: { friendId: req.params.friendId } } },
+            { $pull: { friends: { _id: req.params.friendId } } },
             { runValidators: true, new: true }
         )
-            .then(dbNotebookData => {
-                if (!dbNotebookData) {
+            .then(dbUserData => {
+                if (!dbUserData) {
                     return res.status(404).json({ message: 'No user with this id!' });
                 }
-                res.json(dbNotebookData);
+                res.json(dbUserData);
             })
             .catch(err => {
                 console.log(err);
