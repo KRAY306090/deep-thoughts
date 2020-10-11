@@ -36,5 +36,9 @@ Insomnia Core can be used to explore and test routes.
   * Create a new reaction attached to a specific thought
   * Delete a reaction from a thought
   
+A walthrough video of route testing can be found here https://drive.google.com/file/d/1VOVd0CaH8KcRY4fpz4b43akV99H3a2fV/view
+
+https://drive.google.com/file/d/1k8le9CYhJdEbmqFVGbPiymwSv7oEoERR/view
+  
 ## License
 MIT
